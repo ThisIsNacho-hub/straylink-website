@@ -1,0 +1,50 @@
+body {
+    /* latar-belakang */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffecbd;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+.daftar-akun {
+	/* papan-putih */
+    background: #ffffff;
+    width: 380px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+.daftar-akun h2 {
+	/* judul */
+    text-align: center;
+    margin-bottom: 18px;
+    }
+
+.daftar-akun input {
+    width: 95%;
+    padding: 10px;
+    margin-top: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    }
+
+.daftar-akun button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background: #fe0000;
+    border: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    }
+
+.login-link {
+    margin-top: 12px;
+    text-align: center;
+    }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="logo.png">
+    <title>StrayLink</title>
+
+    <style>
+        body {
+	    /* latar-belakang */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #ffecbd;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .daftar-akun {
+	    /* papan-putih */
+            background: #ffffff;
+            width: 380px;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .daftar-akun h2 {
+	    /* judul */
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .daftar-akun input {
+            width: 95%;
+            padding: 10px;
+            margin-top: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .daftar-akun button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            background: #fe0000;
+            border: none;
+            color: white;
+            font-size: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .login-link {
+            margin-top: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="daftar-akun">
+        <h2>Daftar Akun</h2>
+
+        <input id="name" type="text" placeholder="Nama Lengkap">
+        <input id="email" type="email" placeholder="Email">
+        <input id="password" type="password" placeholder="Password">
+
+        <button onclick="daftar()">Daftar</button>
+
+        <p class="login-link">Sudah punya akun? <a href="login.html">Login</a></p>
+    </div>
+
+
+    <script>
+        function daftar() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            if (!name || !email || !password) {
+                alert("Semua kolom wajib diisi!");
+                return;
+            }
+
+            // Ambil user yang sudah tersimpan
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Periksa apakah email sudah terpakai
+            let existingUser = users.find(u => u.email === email);
+
+            if (existingUser) {
+                alert("Email sudah terdaftar. Silakan gunakan email lain.");
+                return;
+            }
+
+            // Simpan user baru
+            users.push({ name, email, password });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("Registrasi berhasil! Silakan login.");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

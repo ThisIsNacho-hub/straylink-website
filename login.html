@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="logo.png">
+    <title>StrayLink</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #ffecbd;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-card {
+            background: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .login-card h2 {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .login-card input {
+            width: 95%;
+            padding: 10px;
+            margin-top: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .login-card button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #ff914d;
+            border: none;
+            color: white;
+            font-size: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <h2>Masuk</h2>
+
+        <input id="email" type="email" placeholder="Email">
+        <input id="password" type="password" placeholder="Password">
+
+        <button onclick="login()">Login</button>
+
+        <p class="register">Belum punya akun? <a href="register.html">Daftar</a></p>
+    </div>
+
+
+    <script>
+        function login() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            let validUser = users.find(u => u.email === email && u.password === password);
+
+            if (validUser) {
+                alert("Login berhasil!");
+                localStorage.setItem("loggedInUser", JSON.stringify(validUser));
+                window.location.href = "index.html";
+            } else {
+                alert("Email atau password salah!");
+            }
+        }
+    </script>
+
+</body>
+</html>
